@@ -22,7 +22,7 @@
   <script src="js/insta.js" defer></script>
 
 <!-- //トラッキングコード -->
-  
+
 </head>
 <body>
 
@@ -155,14 +155,15 @@
         <p class="hero-copy__text">木の香りがする 小さなお店</p>
       </div>
 
-      <!-- 混み具合表示（あとでFirebaseの値に差し替える） -->
-      <aside class="crowd-status" aria-label="ただいまの混み具合" aria-live="polite">
+      <!-- 混み具合表示（第6歩でFirebaseと接続済み。書き換えは js/crowd.js が担当）
+           ★変更点：aside・丸印・状態の文字・最終更新に id を付けた -->
+      <aside class="crowd-status" id="crowdStatus" aria-label="ただいまの混み具合" aria-live="polite">
         <p class="crowd-status__label">ただいまの混み具合</p>
         <div class="crowd-status__main">
-          <span class="crowd-status__dot" aria-hidden="true"></span>
-          <p class="crowd-status__value">すぐにご案内できます</p>
+          <span class="crowd-status__dot" id="crowdStatusDot" aria-hidden="true"></span>
+          <p class="crowd-status__value" id="crowdStatusValue">読み込み中…</p>
         </div>
-        <p class="crowd-status__updated">最終更新：13:33</p>
+        <p class="crowd-status__updated" id="crowdStatusUpdated"></p>
       </aside>
     </section>
 
@@ -241,7 +242,7 @@
       <section class="news" id="news">
         <p class="news-eyebrow">Infomation</p>
         <h2 class="news-title">お知らせ</h2>
-      
+
         <div class="news-grid">
           <!-- 大きいカード(最新の1件) -->
           <a class="news-card news-card--big" href="#">
@@ -252,14 +253,14 @@
               <p class="news-text">秋の限定ランチが始まりました</p>
             </div>
           </a>
-      
+
           <!-- 小さいカード①② -->
           <a class="news-card" href="#">
             <time class="news-date" datetime="2026-10-20">2026.10.20</time>
             <span class="news-tag news-tag--pink">お知らせ</span>
             <p class="news-text">11月の定休日のご案内</p>
           </a>
-      
+
           <a class="news-card" href="#">
             <time class="news-date" datetime="2026-10-05">2026.10.05</time>
             <span class="news-tag">イベント</span>
@@ -267,6 +268,9 @@
           </a>
         </div>
       </section>
+
+  <!-- ★第6歩で追加：混み具合表示の係（Firebaseの掲示板を見て札を書き換える） -->
+  <script type="module" src="js/crowd.js"></script>
 
 </body>
 </html>
